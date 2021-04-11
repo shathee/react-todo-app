@@ -1,12 +1,12 @@
-function TodoList() {
-    const todos = [
-        { id: 1, text: "Wash dishes", done: false },
-        { id: 2, text: "Do laundry", done: false },
-        { id: 3, text: "Take shower", done: false }
-      ];
+function TodoList(props) {
+    const todoList = props.todos.map( todo => (
+        <li key={todo.id}>{todo.text}</li>
+    ));
     
     return (
-        <p>To do list</p>
+        <ul>
+            {todoList}
+        </ul>
     );
 }
 
