@@ -1,12 +1,17 @@
+import classes from './TodoList.module.css'
+
 function TodoList(props) {
+    
     const todoList = props.todos.map( todo => (
-        <li key={todo.id}>{todo.text}</li>
+        <li key={todo.id}>{todo.text} -> {todo.done ? "line-through" : "Pending"}</li>
     ));
     
     return (
-        <ul>
-            {todoList}
-        </ul>
+        <div className={classes.TodoListDiv}>
+            <ul>
+                {todoList} 
+            </ul>
+        </div>
     );
 }
 

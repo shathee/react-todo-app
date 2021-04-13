@@ -1,0 +1,13 @@
+.AddTodoDiv {
+    background-color: #C0B9DD;
+    width:40%
+}
+.AddTodoDiv form{
+    padding: 20px 10px 10px 20px;
+}
+
+@media (max-width: 600px){
+    .AddTodoDiv {
+        width:100%
+    }
+  }

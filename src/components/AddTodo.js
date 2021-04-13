@@ -1,4 +1,5 @@
 
+import classes from './AddTodo.module.css';
 import {useRef} from 'react';
 
 function AddTodo({setTodos}) {
@@ -8,11 +9,12 @@ function AddTodo({setTodos}) {
         event.preventDefault();
         const text = event.target.elements.todoName.value
         const todo = {
-            id:4,
+            id:'',
             text,
             done:false
         }
         setTodos(prevTodos => {
+            todo.id = prevTodos.length + 1;
             return prevTodos.concat(todo)
         })
         inputRef.current.value = '';
@@ -20,10 +22,12 @@ function AddTodo({setTodos}) {
     
 
     return (
-      <form onSubmit={handleAddTodo}>
-        <input name="todoName" placeholder="Add New todo to your list" ref={inputRef} />
-        <button type="submit">Add</button>
-      </form>
+      <div className={classes.AddTodoDiv}>
+        <form onSubmit={handleAddTodo}>
+          <input name="todoName" placeholder="Add New todo to your list" ref={inputRef} />
+          <button type="submit">Add</button>
+        </form>
+      </div>
     );
   }
 

@@ -1,0 +1,16 @@
+.TodoListDiv {
+    background-color: #DED9E2;
+    width:60%;
+    justify-content: left;
+    height: 70vh;
+}
+.TodoListDiv ul li {
+    list-style: none;
+    text-align: left;
+}
+
+@media (max-width: 600px){
+    .TodoListDiv {
+        width:100%
+    }
+  }

@@ -1,9 +1,15 @@
+body {
+  margin: auto;
+}
 .App {
   text-align: center;
+  margin: auto;
+  padding-right: 25px;
+  padding-left:  25px;
 }
 
 .App-logo {
-  height: 40vmin;
+  height: 20vmin;
   pointer-events: none;
 }
 
@@ -34,5 +40,18 @@
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+
+.todoContainer {
+  display: flex;
+  flex-flow: row;
+}
+
+@media (max-width: 600px){
+  .todoContainer {
+    display: flex;
+    flex-flow: column;
   }
 }
