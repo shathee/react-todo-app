@@ -4,9 +4,19 @@
     justify-content: left;
     height: 70vh;
 }
-.TodoListDiv ul li {
+.TodoListDiv table {
+    padding: 5px;
+    width: 100%;
+}
+
+
+.TodoListDiv tr td {
+    padding:2px 5px 2px 5px;
     list-style: none;
     text-align: left;
+}
+.tblHeader td{
+    font-weight: bold;
 }
 
 @media (max-width: 600px){
