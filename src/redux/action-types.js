@@ -1,0 +1,5 @@
+export const ActionTypes = {
+    SET_INTIAL_TODOS : "SET_INTIAL_TODOS",
+    ADD_TODO : "ADD_TODO",
+    TOOGLE_TODO_STATUS : "TOOGLE_TODO_STATUS",
+};
