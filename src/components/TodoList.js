@@ -38,10 +38,20 @@ const DoneButton = styled.button`
 
 
 function TodoList(props) {
-    
+    function handleMarkAsDone(todo) {
+        const updatedTodos = props.todos.map((t) =>
+        t.id === todo.id
+            ? {
+                ...t,
+                done: !t.done
+            }
+            : t
+        );
+        props.setTodos(updatedTodos);
+    }    
 
     const todoList = props.todos.map( todo => (
-        <tr key={todo.id}><td >{todo.text} </td><td>{ todo.done ?"Done" : "Pending"  }</td><td>{ todo.done ? <ArchiveButton>Archive</ArchiveButton> : <DoneButton>Mark as Done</DoneButton> }</td></tr>
+        <tr key={todo.id}><td >{todo.text} </td><td>{ todo.done ?"Done" : "Pending"  }</td><td>{ todo.done ? <ArchiveButton>Archive</ArchiveButton> : <DoneButton onClick={() => handleMarkAsDone(todo)}>Mark as Done</DoneButton> }</td></tr>
     ));
     
     return (

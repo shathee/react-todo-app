@@ -18,7 +18,7 @@ function App() {
         <h1>React To Do Application</h1>
       </header>
       <div className="todoContainer">
-        <TodoList todos = {todos} />
+        <TodoList todos = {todos} setTodos={setTodos} />
         <AddTodo setTodos={setTodos} />
       </div>
     </div>
