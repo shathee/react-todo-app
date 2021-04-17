@@ -51,7 +51,7 @@ function TodoList(props) {
     }    
 
     const todoList = props.todos.map( todo => (
-        <tr key={todo.id}><td >{todo.text} </td><td>{ todo.done ?"Done" : "Pending"  }</td><td>{ todo.done ? <ArchiveButton>Archive</ArchiveButton> : <DoneButton onClick={() => handleMarkAsDone(todo)}>Mark as Done</DoneButton> }</td></tr>
+        <tr key={todo.id}><td >{todo.text} </td><td>{ todo.done ?"Done" : "Pending"  }</td><td>{ todo.done ? <ArchiveButton onClick={() => handleMarkAsDone(todo)}>Mark as Pending</ArchiveButton> : <DoneButton onClick={() => handleMarkAsDone(todo)}>Mark as Done</DoneButton> }</td></tr>
     ));
     
     return (
