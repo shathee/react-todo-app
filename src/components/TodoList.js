@@ -17,26 +17,38 @@ const TodoListDiv = styled.div`
         text-align: left;
     }
 
-    & .tblHeader td{
+    & thead tr td{
         font-weight: bold;
+    }
+
+    button {
+        min-height:30px;
     }
 
     @media (max-width: 600px){
         width:100%
     }
 `;
+const ArchiveButton = styled.button`
+    background-color: #F5D5ED;
+`;
+const DoneButton = styled.button`
+    background-color: #8CAE68;
+`;
+
 
 function TodoList(props) {
-    console.log(props.todos) 
+    
+
     const todoList = props.todos.map( todo => (
-        <tr key={todo.id}><td >{todo.text} </td><td> { todo.done ? "Done" : <button>Mark as Done</button>}</td></tr>
+        <tr key={todo.id}><td >{todo.text} </td><td>{ todo.done ?"Done" : "Pending"  }</td><td>{ todo.done ? <ArchiveButton>Archive</ArchiveButton> : <DoneButton>Mark as Done</DoneButton> }</td></tr>
     ));
     
     return (
         <TodoListDiv>
             <table>
                 <thead>
-                    <tr><td>Task Name</td><td>Status</td></tr>
+                    <tr><td>Task Name</td><td>Status</td><td> Action</td></tr>
                 </thead>
                 <tbody>
                     {todoList}
