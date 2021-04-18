@@ -9,7 +9,10 @@ const todoReducer = (state = defaultState, action) => {
         case ActionTypes.SET_INTIAL_TODOS:
             return {...state, todos:action.payload};
         case ActionTypes.ADD_TODO:
-            return state;
+            return { 
+                ...state,
+                todos: state.todos.concat(action.payload)
+            };
         case ActionTypes.TOOGLE_TODO_STATUS:
             const updatedTodos = state.todos.map((t) =>
             t.id === action.payload.id

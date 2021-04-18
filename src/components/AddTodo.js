@@ -1,6 +1,8 @@
 
 import styled from 'styled-components';
 import {useState, useRef} from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { addTodo } from '../redux/actions'
 
 const AddTodoDiv = styled.div`
   background-color: #C0B9DD;
@@ -45,10 +47,13 @@ const AddTodoDiv = styled.div`
 
 `;
 
-function AddTodo({setTodos}) {
+function AddTodo() {
     const inputRef = useRef();
     const selRef = useRef();
-    const [isValidText, setIsValidText] = useState(true)
+    const [isValidText, setIsValidText] = useState(true);
+
+    const todos = useSelector( (state) => state.alltodos.todos);
+    const dispatch = useDispatch()
 
     function handleAddTodo(event) {
         event.preventDefault();
@@ -60,14 +65,12 @@ function AddTodo({setTodos}) {
           return;
         }
         const todo = {
-            id:'',
+            id: todos.length + 1,
             text,
             done:done
         }
-        setTodos(prevTodos => {
-            todo.id = prevTodos.length + 1;
-            return prevTodos.concat(todo)
-        });
+        
+        dispatch(addTodo(todo));
         setIsValidText(true);
         inputRef.current.value = '';
         selRef.current.value = false;

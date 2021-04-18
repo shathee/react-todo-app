@@ -1,13 +1,14 @@
 import {useEffect} from 'react';
 import './App.css';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import {setIntialTodos} from './redux/actions'
 import TodoList from './components/TodoList';
 import AddTodo from './components/AddTodo';
 
 
 function App() {
-  const todos = useSelector( (state) => state.alltodos);
+  // const todos = useSelector( (state) => state.alltodos.todos);
+  
   const dispatch = useDispatch();
   const getToDos = () => {
     fetch("./data/data.json")
@@ -22,7 +23,7 @@ function App() {
     
   useEffect(() => {
     getToDos();
-  }, [])
+  }, [] )
   
   return (
     <div className="App">
