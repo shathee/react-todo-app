@@ -1,5 +1,7 @@
 import styled from 'styled-components'
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import {toogleTodo} from '../redux/actions'
+
 
 const TodoListDiv = styled.div`
     background-color: #DED9E2;
@@ -40,17 +42,10 @@ const DoneButton = styled.button`
 
 function TodoList(props) {
     const todos = useSelector( (state) => state.alltodos.todos);
-    console.log(todos)
+    const dispatch = useDispatch();
+    
     function handleMarkAsDone(todo) {
-        // const updatedTodos = props.todos.map((t) =>
-        // t.id === todo.id
-        //     ? {
-        //         ...t,
-        //         done: !t.done
-        //     }
-        //     : t
-        // );
-        // props.setTodos(updatedTodos);
+        dispatch(toogleTodo(todo));
     }    
 
     const todoList = todos.map( todo => (

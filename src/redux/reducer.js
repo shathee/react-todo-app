@@ -11,7 +11,15 @@ const todoReducer = (state = defaultState, action) => {
         case ActionTypes.ADD_TODO:
             return state;
         case ActionTypes.TOOGLE_TODO_STATUS:
-            return state;
+            const updatedTodos = state.todos.map((t) =>
+            t.id === action.payload.id
+                ? {
+                    ...t,
+                    done: !t.done
+                }
+                : t
+            );
+            return {...state, todos:updatedTodos};
         default:
             return state;
     }

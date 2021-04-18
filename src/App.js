@@ -31,7 +31,7 @@ function App() {
       </header>
       <div className="todoContainer">
         <TodoList />
-        {/* <AddTodo />  */}
+        <AddTodo /> 
       </div>
     </div>
   );

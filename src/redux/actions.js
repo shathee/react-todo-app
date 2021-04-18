@@ -13,3 +13,9 @@ export const addTodo = (todo) => {
         payload: todo,
     }
 }
+export const toogleTodo = (todo) => {
+    return {
+        type: ActionTypes.TOOGLE_TODO_STATUS,
+        payload: todo,
+    }
+}
