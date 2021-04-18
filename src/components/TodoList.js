@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { useSelector } from 'react-redux';
 
 const TodoListDiv = styled.div`
     background-color: #DED9E2;
@@ -38,19 +39,21 @@ const DoneButton = styled.button`
 
 
 function TodoList(props) {
+    const todos = useSelector( (state) => state.alltodos.todos);
+    console.log(todos)
     function handleMarkAsDone(todo) {
-        const updatedTodos = props.todos.map((t) =>
-        t.id === todo.id
-            ? {
-                ...t,
-                done: !t.done
-            }
-            : t
-        );
-        props.setTodos(updatedTodos);
+        // const updatedTodos = props.todos.map((t) =>
+        // t.id === todo.id
+        //     ? {
+        //         ...t,
+        //         done: !t.done
+        //     }
+        //     : t
+        // );
+        // props.setTodos(updatedTodos);
     }    
 
-    const todoList = props.todos.map( todo => (
+    const todoList = todos.map( todo => (
         <tr key={todo.id}><td >{todo.text} </td><td>{ todo.done ?"Done" : "Pending"  }</td><td>{ todo.done ? <ArchiveButton onClick={() => handleMarkAsDone(todo)}>Mark as Pending</ArchiveButton> : <DoneButton onClick={() => handleMarkAsDone(todo)}>Mark as Done</DoneButton> }</td></tr>
     ));
     
