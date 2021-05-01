@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { addTodo } from '../redux/actions'
 
 const AddTodoDiv = styled.div`
-  background-color: #C0B9DD;
+  background-color: #D5E68D;
   width:40%;
   align-items: center;
   

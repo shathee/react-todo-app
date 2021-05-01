@@ -42,8 +42,6 @@ body {
     transform: rotate(360deg);
   }
 }
-
-
 .todoContainer {
   display: flex;
   flex-flow: row;

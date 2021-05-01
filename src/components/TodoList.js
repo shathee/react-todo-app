@@ -4,26 +4,27 @@ import {toogleTodo} from '../redux/actions'
 
 
 const TodoListDiv = styled.div`
-    background-color: #DED9E2;
+    background-color: #D5E68D;
     width:60%;
     justify-content: left;
     height: 70vh;
     
-    & table {
-        padding: 5px;
-        width: 100%;
+    & ul {
+        display: flex;
+        flex-flow:column;
+        li {
+            list-style:none;
+            padding: 5px;
+            div {
+                width:50%;
+                font-size: 1.5rem;
+            }
+        }
     }
-
-    & tr td {
-        padding:2px 5px 2px 5px;
-        list-style: none;
-        text-align: left;
+    & .lst {
+        display: flex;
+        flex-flow:row;
     }
-
-    & thead tr td{
-        font-weight: bold;
-    }
-
     button {
         min-height:30px;
     }
@@ -31,12 +32,20 @@ const TodoListDiv = styled.div`
     @media (max-width: 600px){
         width:100%
     }
+    & .done{
+        text-decoration: line-through #6B0504;
+    }
 `;
-const ArchiveButton = styled.button`
-    background-color: #F5D5ED;
+const PendingButton = styled.button`
+    background-color: #6B0504;
+    width:70%;
+    font-size: 1.2rem;
+    color:#fefefe;
 `;
 const DoneButton = styled.button`
-    background-color: #8CAE68;
+    font-size: 1.2rem;
+    width:70%;
+    background-color: #47A025;
 `;
 
 
@@ -49,19 +58,17 @@ function TodoList(props) {
     }    
 
     const todoList = todos.map( todo => (
-        <tr key={todo.id}><td >{todo.text} </td><td>{ todo.done ?"Done" : "Pending"  }</td><td>{ todo.done ? <ArchiveButton onClick={() => handleMarkAsDone(todo)}>Mark as Pending</ArchiveButton> : <DoneButton onClick={() => handleMarkAsDone(todo)}>Mark as Done</DoneButton> }</td></tr>
+        <li className='lst' key={todo.id}>
+            <div className={todo.done ?"done" : "pending"}>{todo.text} </div>
+            <div>{ todo.done ? <PendingButton onClick={() => handleMarkAsDone(todo)}>Mark as Pending</PendingButton> : <DoneButton onClick={() => handleMarkAsDone(todo)}>Mark as Done</DoneButton>}</div> 
+        </li>
     ));
     
     return (
         <TodoListDiv>
-            <table>
-                <thead>
-                    <tr><td>Task Name</td><td>Status</td><td> Action</td></tr>
-                </thead>
-                <tbody>
-                    {todoList}
-                </tbody> 
-            </table>
+            <ul>
+                   {todoList}
+            </ul>
         </TodoListDiv>
     );
 }
